@@ -6,12 +6,14 @@ export type Project = {
   description: string;
   bullets?: readonly string[];
   url?: string;
+  github?: string;
+  repos?: readonly { label: string; href: string }[];
 };
 
 export const FEATURED_PROJECTS: Project[] = [
   {
     id: "clinic-management",
-    title: "Clinic Management",
+    title: "Electronic Medical Record (EMR) System",
     label: "Freelance",
     techStack: ["React", "TypeScript", "MUI", "Formik", "REST APIs", "Dnd Kit"],
     description:
@@ -31,6 +33,16 @@ export const FEATURED_PROJECTS: Project[] = [
     ],
     description:
       "Interactive educational platform using WebSockets for real-time messaging and instant teacher–student communication.",
+    repos: [
+      {
+        label: "Frontend",
+        href: "https://github.com/EWSD-Group-3-2025/frontend",
+      },
+      {
+        label: "Backend",
+        href: "https://github.com/EWSD-Group-3-2025/backend",
+      },
+    ],
   },
   {
     id: "quotation-management",
@@ -47,6 +59,7 @@ export const FEATURED_PROJECTS: Project[] = [
     techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Shadcn", "Zustand"],
     description:
       "Modern, minimalist e-commerce platform for boutique perfumes featuring seamless checkout, global cart state via Zustand, and dynamic product routing.",
+    github: "https://github.com/HlaingHpone1/Perfume-E-commerce",
   },
   {
     id: "shadcn-form-builder",
@@ -63,6 +76,7 @@ export const FEATURED_PROJECTS: Project[] = [
     description:
       "Dynamic drag-and-drop form builder that auto-generates accessible React forms with strict Zod validation schemas from visual user inputs.",
     url: "https://form.hlainghpone.com",
+    github: "https://github.com/HlaingHpone1/Shadcn-Form-Builder",
   },
 ];
 

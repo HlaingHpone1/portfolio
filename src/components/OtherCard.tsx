@@ -37,19 +37,52 @@ export function OtherCard({ project }: { project: Project }) {
         </div>
       </div>
 
-      {project.url && (
-        <Link
-          href={project.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={(e) => e.stopPropagation()}
-          className="self-start"
-        >
-          <span className="card-btn inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold tracking-wide rounded-sm border select-none">
-            <ArrowUpRight className="w-3 h-3" strokeWidth={2.5} />
-            View Project
-          </span>
-        </Link>
+      {(project.url || project.github || project.repos?.length) && (
+        <div className="flex flex-wrap gap-2">
+          {project.url && (
+            <Link
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="self-start"
+            >
+              <span className="card-btn inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold tracking-wide rounded-sm border select-none">
+                <ArrowUpRight className="w-3 h-3" strokeWidth={2.5} />
+                View Project
+              </span>
+            </Link>
+          )}
+          {project.github && (
+            <Link
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="self-start"
+            >
+              <span className="card-btn inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold tracking-wide rounded-sm border select-none">
+                <ArrowUpRight className="w-3 h-3" strokeWidth={2.5} />
+                GitHub
+              </span>
+            </Link>
+          )}
+          {project.repos?.map((repo) => (
+            <Link
+              key={repo.href}
+              href={repo.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="self-start"
+            >
+              <span className="card-btn inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold tracking-wide rounded-sm border select-none">
+                <ArrowUpRight className="w-3 h-3" strokeWidth={2.5} />
+                {repo.label}
+              </span>
+            </Link>
+          ))}
+        </div>
       )}
     </motion.div>
   );

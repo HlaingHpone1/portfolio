@@ -18,10 +18,14 @@ const spaceMono = Space_Mono({
   weight: ["400", "700"],
 });
 
+const title = "Hlaing Hpone — Frontend Developer";
+const description =
+  "Next.js & TypeScript Frontend Developer based in Yangon, Myanmar. Building scalable, responsive web applications with modern UI frameworks.";
+
 export const metadata: Metadata = {
-  title: "Hlaing Hpone — Frontend Developer",
-  description:
-    "Next.js & TypeScript Frontend Developer based in Yangon, Myanmar. Building scalable, responsive web applications with modern UI frameworks.",
+  metadataBase: new URL("https://www.hlainghpone.com"),
+  title,
+  description,
   keywords: [
     "Frontend Developer",
     "Next.js",
@@ -31,6 +35,22 @@ export const metadata: Metadata = {
     "Myanmar",
     "Hlaing Hpone",
   ],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    siteName: "Hlaing Hpone",
+    title,
+    description,
+    url: "https://www.hlainghpone.com",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+  },
 };
 
 /* ── Anti-flash: apply saved/system theme before React hydrates ── */

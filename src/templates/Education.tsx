@@ -13,7 +13,7 @@ export default function Education() {
 
         <div className="space-y-0 divide-y divide-neutral-100 dark:divide-neutral-800">
           {EDUCATION.map((item, index) => (
-            <EducationCard key={item.institution} education={item} index={index} />
+            <EducationCard key={item.degree} education={item} index={index} />
           ))}
         </div>
       </div>
