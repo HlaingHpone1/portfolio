@@ -147,6 +147,14 @@ export function ProjectCard({
                   ))}
                 </div>
               )}
+
+              {project.login && (
+                <p className="card-muted text-sm font-sans leading-relaxed">
+                  Email: {project.login.email}
+                  <br />
+                  Password: {project.login.password}
+                </p>
+              )}
             </div>
           </motion.div>
         )}

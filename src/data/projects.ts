@@ -8,6 +8,7 @@ export type Project = {
   url?: string;
   github?: string;
   repos?: readonly { label: string; href: string }[];
+  login?: { email: string; password: string };
 };
 
 export const FEATURED_PROJECTS: Project[] = [
@@ -59,7 +60,12 @@ export const FEATURED_PROJECTS: Project[] = [
     techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Shadcn", "Zustand"],
     description:
       "Modern, minimalist e-commerce platform for boutique perfumes featuring seamless checkout, global cart state via Zustand, and dynamic product routing.",
+    url: "https://perfume.hlainghpone.com/products",
     github: "https://github.com/HlaingHpone1/Perfume-E-commerce",
+    login: {
+      email: "admin@gmail.com",
+      password: "P@ssw0rd",
+    },
   },
   {
     id: "shadcn-form-builder",
