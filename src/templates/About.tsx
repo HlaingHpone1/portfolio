@@ -69,7 +69,7 @@ export default function About() {
             >
               With{" "}
               <span className="text-black dark:text-white font-semibold">
-                1+ year of hands-on experience
+                2+ year of hands-on experience
               </span>{" "}
               specialising in
               <span className="text-black dark:text-white font-semibold">

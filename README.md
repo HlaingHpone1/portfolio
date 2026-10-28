@@ -4,7 +4,7 @@ Frontend portfolio built with Next.js and TypeScript. Based in Yangon, Myanmar.
 
 **Live site:** [hlainghpone.com](https://www.hlainghpone.com)
 
-The page covers About, Experience, Projects, Education, and Contact. A downloadable CV is at `public/cv.pdf`.
+The page covers About, Experience, Projects, Education, Certifications, and Contact. A downloadable CV is at `public/cv.pdf`.
 
 ## Stack
 

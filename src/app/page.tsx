@@ -4,6 +4,7 @@ import About from "@/templates/About";
 import Experience from "@/templates/Experience";
 import Projects from "@/templates/Projects";
 import Education from "@/templates/Education";
+import Certifications from "@/templates/Certifications";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
         <Experience />
         <Projects />
         <Education />
+        <Certifications />
       </main>
       <Footer />
     </>

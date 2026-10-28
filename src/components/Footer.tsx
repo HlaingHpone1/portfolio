@@ -41,7 +41,7 @@ export default function Footer() {
       className="bg-black text-white px-6 md:px-10 pt-14 pb-10 md:pt-20 md:pb-12"
     >
       <div className="max-w-6xl mx-auto flex flex-col h-full">
-        <SectionLabel label="05 — Contact" className="mb-6 !text-neutral-500" />
+        <SectionLabel label="06 — Contact" className="mb-6 !text-neutral-500" />
 
         <div className="mb-8 md:mb-10 overflow-hidden">
           <motion.h2
