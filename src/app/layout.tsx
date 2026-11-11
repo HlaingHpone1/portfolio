@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Space_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeContext";
+import { IntroProvider } from "@/context/IntroContext";
+import Preloader from "@/components/Preloader";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const spaceGrotesk = Space_Grotesk({
@@ -53,7 +55,7 @@ export const metadata: Metadata = {
   },
 };
 
-/* ── Anti-flash: apply saved/system theme before React hydrates ── */
+/* ── Anti-flash: apply saved/system theme (and skip seen intro) before React hydrates ── */
 const ANTI_FLASH = `(function(){
   try{
     var s=localStorage.getItem('theme');
@@ -61,6 +63,7 @@ const ANTI_FLASH = `(function(){
     else if(!s&&window.matchMedia('(prefers-color-scheme: dark)').matches){
       document.documentElement.classList.add('dark');
     }
+    if(sessionStorage.getItem('intro-seen')==='1'){document.documentElement.classList.add('intro-seen');}
   }catch(e){}
 })();`;
 
@@ -78,7 +81,12 @@ export default function RootLayout({
       <body
         className={`${spaceGrotesk.variable} ${spaceMono.variable} antialiased bg-white dark:bg-neutral-950 text-black dark:text-white selection:bg-black selection:text-white dark:selection:bg-white dark:selection:text-black`}
       >
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <IntroProvider>
+            <Preloader />
+            {children}
+          </IntroProvider>
+        </ThemeProvider>
         <SpeedInsights />
       </body>
     </html>

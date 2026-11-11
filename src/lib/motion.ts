@@ -12,15 +12,16 @@ export const fadeUp = (delay = 0) => ({
 });
 
 // Mount-time fade + slide up (Hero — uses animate, not whileInView)
-export const mountFadeUp = (delay = 0) => ({
+// `play` = false holds the element at `initial` (e.g. while the intro loader runs)
+export const mountFadeUp = (delay = 0, play = true) => ({
   initial: { opacity: 0, y: 28 },
-  animate: { opacity: 1, y: 0 },
+  animate: play ? { opacity: 1, y: 0 } : undefined,
   transition: { duration: 0.7, ease: EASE, delay },
 });
 
 // Mount-time fade in (Hero scroll hint)
-export const mountFadeIn = (delay = 0) => ({
+export const mountFadeIn = (delay = 0, play = true) => ({
   initial: { opacity: 0 },
-  animate: { opacity: 1 },
+  animate: play ? { opacity: 1 } : undefined,
   transition: { duration: 0.7, ease: EASE, delay },
 });

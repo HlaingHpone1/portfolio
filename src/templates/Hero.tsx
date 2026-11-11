@@ -8,8 +8,11 @@ import {
   mountFadeUp as fadeUp,
   mountFadeIn as fadeIn,
 } from "@/lib/motion";
+import { useIntro } from "@/context/IntroContext";
 
 export default function Hero() {
+  const { introDone } = useIntro();
+
   return (
     <section
       id="hero"
@@ -19,14 +22,14 @@ export default function Hero() {
         {/* ════ Left — Text Content ════ */}
         <div className="space-y-5 order-2 lg:order-1 lg:col-span-2">
           <motion.p
-            {...fadeUp(0.05)}
+            {...fadeUp(0.05, introDone)}
             className="text-sm md:text-base text-neutral-500 dark:text-neutral-400 font-medium tracking-widest uppercase"
           >
             Hi, I&apos;m Hlaing Hpone.
           </motion.p>
 
           <motion.h1
-            {...fadeUp(0.15)}
+            {...fadeUp(0.15, introDone)}
             className="text-[clamp(2rem,4.5vw,3.75rem)] font-bold text-black dark:text-white leading-tight tracking-tight"
           >
             Next.js
@@ -43,13 +46,13 @@ export default function Hero() {
 
           <motion.div
             initial={{ scaleX: 0, originX: 0 }}
-            animate={{ scaleX: 1 }}
+            animate={introDone ? { scaleX: 1 } : undefined}
             transition={{ duration: 0.6, ease: EASE, delay: 0.28 }}
             className="w-12 h-px bg-black dark:bg-white"
           />
 
           <motion.p
-            {...fadeUp(0.36)}
+            {...fadeUp(0.36, introDone)}
             className="text-base md:text-lg text-neutral-500 dark:text-neutral-400 font-normal max-w-md leading-relaxed"
           >
             Building scalable, responsive web applications with modern UI
@@ -57,7 +60,7 @@ export default function Hero() {
           </motion.p>
 
           <motion.div
-            {...fadeUp(0.44)}
+            {...fadeUp(0.44, introDone)}
             className="flex items-center gap-1.5 text-sm text-neutral-400 dark:text-neutral-500 font-medium tracking-wide"
           >
             <MapPin className="w-4 h-4 shrink-0" strokeWidth={1.75} />
@@ -65,7 +68,7 @@ export default function Hero() {
           </motion.div>
 
           <motion.a
-            {...fadeIn(0.62)}
+            {...fadeIn(0.62, introDone)}
             href="#about"
             className="inline-flex items-center gap-2 pt-1 text-xs text-neutral-300 hover:text-neutral-500 dark:text-neutral-600 dark:hover:text-neutral-400 font-medium tracking-widest uppercase transition-colors duration-500"
           >
@@ -89,13 +92,13 @@ export default function Hero() {
         <div className="order-1 lg:order-2 lg:col-span-1 flex justify-center lg:justify-end">
           <motion.div
             initial={{ opacity: 0, scale: 0.94, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
+            animate={introDone ? { opacity: 1, scale: 1, y: 0 } : undefined}
             transition={{ duration: 0.85, ease: EASE, delay: 0.1 }}
             className="relative"
           >
             <motion.div
               initial={{ opacity: 0, x: 0, y: 0 }}
-              animate={{ opacity: 1, x: 12, y: 12 }}
+              animate={introDone ? { opacity: 1, x: 12, y: 12 } : undefined}
               transition={{ duration: 0.7, ease: EASE, delay: 0.4 }}
               className="absolute inset-0 bg-neutral-100 dark:bg-neutral-800 rounded-sm"
             />

@@ -37,34 +37,39 @@ export default function MobileMenu() {
         </button>
       </div>
 
+      {/* grid-rows 0fr → 1fr animates to the content's natural height (no fixed max-h cap) */}
       <div
-        className={`md:hidden absolute top-16 left-0 right-0 overflow-hidden transition-all duration-300 bg-white dark:bg-neutral-950 border-t border-neutral-100 dark:border-neutral-800 ${
-          menuOpen ? "max-h-72 opacity-100" : "max-h-0 opacity-0"
+        className={`md:hidden absolute top-16 left-0 right-0 grid transition-all duration-300 bg-white dark:bg-neutral-950 border-t border-neutral-100 dark:border-neutral-800 ${
+          menuOpen
+            ? "grid-rows-[1fr] opacity-100"
+            : "grid-rows-[0fr] opacity-0 pointer-events-none"
         }`}
       >
-        <ul className="flex flex-col px-6 py-4 gap-4 font-sans" role="list">
-          {NAV_LINKS.map(({ label, href }) => (
-            <li key={label}>
+        <div className="overflow-hidden min-h-0">
+          <ul className="flex flex-col px-6 py-4 gap-4 font-sans" role="list">
+            {NAV_LINKS.map(({ label, href }) => (
+              <li key={label}>
+                <Link
+                  href={href}
+                  onClick={() => setMenuOpen(false)}
+                  className="text-sm font-medium text-neutral-600 hover:text-black dark:text-neutral-400 dark:hover:text-white transition-colors duration-500 tracking-wide"
+                >
+                  {label}
+                </Link>
+              </li>
+            ))}
+            <li className="pt-2 border-t border-neutral-100 dark:border-neutral-800">
               <Link
-                href={href}
-                onClick={() => setMenuOpen(false)}
-                className="text-sm font-medium text-neutral-600 hover:text-black dark:text-neutral-400 dark:hover:text-white transition-colors duration-500 tracking-wide"
+                href="/cv.pdf"
+                download
+                className="inline-flex items-center gap-2 px-4 py-2 bg-black dark:bg-white text-white dark:text-black text-sm font-semibold tracking-wide rounded hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-colors duration-500"
               >
-                {label}
+                <Download className="w-3.5 h-3.5" strokeWidth={2.5} />
+                Download CV
               </Link>
             </li>
-          ))}
-          <li className="pt-2 border-t border-neutral-100 dark:border-neutral-800">
-            <Link
-              href="/cv.pdf"
-              download
-              className="inline-flex items-center gap-2 px-4 py-2 bg-black dark:bg-white text-white dark:text-black text-sm font-semibold tracking-wide rounded hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-colors duration-500"
-            >
-              <Download className="w-3.5 h-3.5" strokeWidth={2.5} />
-              Download CV
-            </Link>
-          </li>
-        </ul>
+          </ul>
+        </div>
       </div>
     </>
   );
